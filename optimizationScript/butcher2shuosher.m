@@ -1,0 +1,9 @@
+function [alpha,beta,v]=butcher2shuosher(A,b,r);
+b=b(:);
+s=size(A,1);
+zero=zeros(s+1,1);
+T=[A;b'];
+R=eye(s)+r*A;
+beta=[T/R ,zero];
+alpha=r*beta;
+v=1-sum(alpha,2);
